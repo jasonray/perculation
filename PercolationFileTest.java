@@ -53,131 +53,131 @@ class PercolationFileTest {
 
     @Test
     public void eagle25() {
-        runTest("eagle25.txt", 400, true);
+        runTest("testfiles/eagle25.txt", 400, true);
     }
 
     @Test
     public void greeting57() {
-        runTest("greeting57.txt", 2522, false);
+        runTest("testfiles/greeting57.txt", 2522, false);
     }
 
     @Test
     public void heart25() {
-        runTest("heart25.txt", 352, false);
+        runTest("testfiles/heart25.txt", 352, false);
     }
 
     @Test
     public void input1no() {
-        runTest("input1-no.txt", 0, false);
+        runTest("testfiles/input1-no.txt", 0, false);
     }
 
     @Test
     public void input1() {
-        runTest("input1.txt", 1, true);
+        runTest("testfiles/input1.txt", 1, true);
     }
 
     @Test
     public void input2no() {
-        runTest("input2-no.txt", 2, false);
+        runTest("testfiles/input2-no.txt", 2, false);
     }
 
     @Test
     public void input2() {
-        runTest("input2.txt", 3, true);
+        runTest("testfiles/input2.txt", 3, true);
     }
 
     @Test
     public void input3() {
-        runTest("input3.txt", 6, true);
+        runTest("testfiles/input3.txt", 6, true);
     }
 
     @Test
     public void input4() {
-        runTest("input4.txt", 8, true);
+        runTest("testfiles/input4.txt", 8, true);
     }
 
     @Test
     public void input5() {
-        runTest("input5.txt", 25, true);
+        runTest("testfiles/input5.txt", 25, true);
     }
 
     @Test
     public void input6() {
-        runTest("input6.txt", 18, true);
+        runTest("testfiles/input6.txt", 18, true);
     }
 
     @Test
     public void input7() {
-        runTest("input7.txt", 16, true);
+        runTest("testfiles/input7.txt", 16, true);
     }
 
     @Test
     public void input8dups() {
-        runTest("input8-dups.txt", 34, true);
+        runTest("testfiles/input8-dups.txt", 34, true);
     }
 
     @Test
     public void input8no() {
-        runTest("input8-no.txt", 33, false);
+        runTest("testfiles/input8-no.txt", 33, false);
     }
 
     @Test
     public void input8() {
-        runTest("input8.txt", 34, true);
+        runTest("testfiles/input8.txt", 34, true);
     }
 
     @Test
     public void input10no() {
-        runTest("input10-no.txt", 55, false);
+        runTest("testfiles/input10-no.txt", 55, false);
     }
 
     @Test
     public void input10() {
-        runTest("input10.txt", 56, true);
+        runTest("testfiles/input10.txt", 56, true);
     }
 
     @Test
     public void input20() {
-        runTest("input20.txt", 250, true);
+        runTest("testfiles/input20.txt", 250, true);
     }
 
     @Test
     public void input50() {
-        runTest("input50.txt", 1412, true);
+        runTest("testfiles/input50.txt", 1412, true);
     }
 
     @Test
     public void java60() {
-        runTest("java60.txt", 578, true);
+        runTest("testfiles/java60.txt", 578, true);
     }
 
     @Test
     public void jerry47() {
-        runTest("jerry47.txt", 1476, true);
+        runTest("testfiles/jerry47.txt", 1476, true);
     }
 
     @Test
     public void princeton96() {
-        runTest("princeton96.txt", 6260, true);
+        runTest("testfiles/princeton96.txt", 6260, true);
     }
 
     @Test
     public void sedgewick60() {
-        runTest("sedgewick60.txt", 2408, true);
+        runTest("testfiles/sedgewick60.txt", 2408, true);
     }
 
     @Test
     public void snake13() {
-        runTest("snake13.txt", 85, true);
+        runTest("testfiles/snake13.txt", 85, true);
     }
 
     @Test
     public void snake101() {
-        runTest("snake101.txt", 5101, true);
+        runTest("testfiles/snake101.txt", 5101, true);
     }
 
     @Test
     public void wayne98() {
-        runTest("wayne98.txt", 5079, true);
+        runTest("testfiles/wayne98.txt", 5079, true);
     }
 }
