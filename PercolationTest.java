@@ -97,12 +97,34 @@ class PercolationTest {
     }
 
     @Test
-    public void openSiteWithStraightLineToTopIsFull() {
+    public void openSiteWithStraightLineToTopIsFull1101() {
         Percolation perc = new Percolation(3);
         assertEquals(false, perc.isFull(1, 1));
         perc.open(1,1);
         assertEquals(false, perc.isFull(1, 1));
         perc.open(0,1);
         assertEquals(true, perc.isFull(1, 1));
+    }
+
+    @Test
+    public void openSiteWithStraightLineToTopIsFull0111() {
+        Percolation perc = new Percolation(3);
+        assertEquals(false, perc.isFull(1, 1));
+        perc.open(0,1);
+        assertEquals(false, perc.isFull(1, 1));
+        perc.open(1,1);
+        assertEquals(true, perc.isFull(1, 1));
+    }
+
+    @Test
+    public void openSiteWithStraightLineToTopIsFull220212() {
+        Percolation perc = new Percolation(3);
+        assertEquals(false, perc.isFull(2, 2));
+        perc.open(2,2);
+        assertEquals(false, perc.isFull(2, 2));
+        perc.open(0,2);
+        assertEquals(false, perc.isFull(2, 2));
+        perc.open(1,2);
+        assertEquals(true, perc.isFull(2, 2));
     }
 }
