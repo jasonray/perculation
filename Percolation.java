@@ -32,7 +32,13 @@ public class Percolation {
 
     // returns the number of open sites
     public int numberOfOpenSites() {
-        return 0;
+        int openSitesCount = 0;
+        for (boolean[] siteStateRow : siteState) {
+            for (boolean siteState : siteStateRow) {
+                if (siteState) openSitesCount++;
+            }
+        }
+        return openSitesCount;
     }
 
     public boolean percolates() {
