@@ -39,7 +39,7 @@ public class Percolation {
         unionIfRightOpen(siteIndex, row, col);
         unionIfAboveOpen(siteIndex, row, col);
         unionIfBelowOpen(siteIndex, row, col);
-        
+
         //if cell is top row, join to virtual top
         unionIfTop(row, siteIndex);
 
@@ -102,13 +102,12 @@ public class Percolation {
         return qfIndex[row][col];
     }
 
-
     // is the site (row, col) open?
     public boolean isOpen(int row, int col) {
         return siteState[row][col];
     }
 
-    // is the site (row, col) full?
+    // is the site (row, col) full?  Full means that it is connected to the top
     public boolean isFull(int row, int col) {
         return qf.find(lookupSiteIndex(row, col)) == qf.find(virtualTopIndex);
     }
