@@ -1,7 +1,6 @@
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
 public class Percolation {
-    private int size;
     private int virtualTopIndex;
     private int virtualBottomIndex;
     private WeightedQuickUnionUF qf;
@@ -10,7 +9,6 @@ public class Percolation {
 
     // creates n-by-n grid, with all sites initially blocked
     public Percolation(int n) {
-        size = n;
         siteState = new boolean[n][n];
         qfIndex = new int[n][n];
 
@@ -48,7 +46,7 @@ public class Percolation {
         }
 
         //if cell is bottom row, join to virtual bottom
-        if (row == size - 1) {
+        if (row == siteState.length - 1) {
             qf.union(siteIndex, virtualBottomIndex);
         }
     }
@@ -63,8 +61,8 @@ public class Percolation {
     }
 
     private boolean isCellOutOfBounds(int row, int col) {
-        if (row < 0 || row >= size) return true;
-        if (col < 0 || col >= size) return true;
+        if (row < 0 || row >= siteState.length) return true;
+        if (col < 0 || col >= siteState[row].length) return true;
         return false;
     }
 
