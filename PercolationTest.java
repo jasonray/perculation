@@ -200,4 +200,19 @@ class PercolationTest {
         });
     }
 
+    @Test
+    public void invalidOpenCellTooFarUp() {
+        Percolation perc = new Percolation(3);
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            perc.open(-1, 1);
+        });
+    }
+
+    @Test
+    public void invalidOpenCellTooFarDown() {
+        Percolation perc = new Percolation(3);
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            perc.open(4, 1);
+        });
+    }
 }
