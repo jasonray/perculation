@@ -79,12 +79,12 @@ class PercolationTest {
     @Test
     public void closedSiteNotFull() {
         Percolation perc = new Percolation(3);
-        assertEquals(false, perc.isFull(1, 1) );
+        assertEquals(false, perc.isFull(1, 1));
     }
 
     @Test
     public void closedSiteAtTopNotFull() {
         Percolation perc = new Percolation(3);
-        assertEquals(false, perc.isFull(0, 0) );
+        assertEquals(false, perc.isFull(0, 0));
     }
 }
