@@ -156,4 +156,28 @@ class PercolationFileTest {
         runTest("jerry47.txt", 1476, true);
     }
 
+    @Test
+    public void princeton96() {
+        runTest("princeton96.txt", 6260, true);
+    }
+
+    @Test
+    public void sedgewick60() {
+        runTest("sedgewick60.txt", 2408, true);
+    }
+
+    @Test
+    public void snake13() {
+        runTest("snake13.txt", 85, true);
+    }
+
+    @Test
+    public void snake101() {
+        runTest("snake101.txt", 5101, true);
+    }
+
+    @Test
+    public void wayne98() {
+        runTest("wayne98.txt", 5079, true);
+    }
 }
