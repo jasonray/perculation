@@ -35,7 +35,7 @@ public class Percolation {
         int siteIndex = lookupSiteIndex(row, col);
 
         //if cell to the left is also open, then union them
-        unionIfNeighborOpen(siteIndex, row, col - 1);
+        unionIfLeftOpen(siteIndex, row, col);
         //if cell to the right is also open, then union them
         unionIfNeighborOpen(siteIndex, row, col + 1);
         //if cell above is also open, then union them
@@ -63,10 +63,15 @@ public class Percolation {
             qf.union(siteIndex, virtualTopIndex);
         }
     }
+
     private void unionIfBottom(int siteRow, int siteIndex) {
         if (isBottomRow(siteRow)) {
             qf.union(siteIndex, virtualBottomIndex);
         }
+    }
+
+    private void unionIfLeftOpen(int siteIndex, int siteRow, int siteCol) {
+        unionIfNeighborOpen(siteIndex, siteRow, siteCol - 1);
     }
 
     private void unionIfNeighborOpen(int siteIndex, int neighborRow, int neighborCol) {
