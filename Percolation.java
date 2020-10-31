@@ -34,21 +34,20 @@ public class Percolation {
         siteState[row][col] = true;
         int siteIndex = lookupSiteIndex(row, col);
 
-        //if cell to the right, left, up, down is also open then join them
+        //if cell to the left is also open, then union them
         unionIfNeighborOpen(siteIndex, row, col - 1);
+        //if cell to the right is also open, then union them
         unionIfNeighborOpen(siteIndex, row, col + 1);
+        //if cell above is also open, then union them
         unionIfNeighborOpen(siteIndex, row + 1, col);
+        //if cell below is also open, then union them
         unionIfNeighborOpen(siteIndex, row - 1, col);
 
         //if cell is top row, join to virtual top
-        if (isTopRow(row)) {
-            qf.union(siteIndex, virtualTopIndex);
-        }
+        unionIfTop(row, siteIndex);
 
         //if cell is bottom row, join to virtual bottom
-        if (isBottomRow(row)) {
-            qf.union(siteIndex, virtualBottomIndex);
-        }
+        unionIfBottom(row, siteIndex);
     }
 
     private boolean isTopRow(int row) {
@@ -57,6 +56,17 @@ public class Percolation {
 
     private boolean isBottomRow(int row) {
         return row == (siteState.length - 1);
+    }
+
+    private void unionIfTop(int siteRow, int siteIndex) {
+        if (isTopRow(siteRow)) {
+            qf.union(siteIndex, virtualTopIndex);
+        }
+    }
+    private void unionIfBottom(int siteRow, int siteIndex) {
+        if (isBottomRow(siteRow)) {
+            qf.union(siteIndex, virtualBottomIndex);
+        }
     }
 
     private void unionIfNeighborOpen(int siteIndex, int neighborRow, int neighborCol) {
