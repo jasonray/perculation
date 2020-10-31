@@ -57,4 +57,22 @@ class PercolationTest {
         Percolation perc = new Percolation(3);
         assertEquals(0, perc.numberOfOpenSites());
     }
+
+    @Test
+    public void checkOpenSitesAfterSwitch() {
+        Percolation perc = new Percolation(3);
+        assertEquals(0, perc.numberOfOpenSites());
+        perc.open(1, 2);
+        assertEquals(1, perc.numberOfOpenSites());
+    }
+
+    @Test
+    public void checkOpenSitesAfterTwoSwitch() {
+        Percolation perc = new Percolation(3);
+        assertEquals(0, perc.numberOfOpenSites());
+        perc.open(1, 2);
+        assertEquals(1, perc.numberOfOpenSites());
+        perc.open(2, 1);
+        assertEquals(2, perc.numberOfOpenSites());
+    }
 }
