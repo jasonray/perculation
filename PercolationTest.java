@@ -75,4 +75,10 @@ class PercolationTest {
         perc.open(2, 1);
         assertEquals(2, perc.numberOfOpenSites());
     }
+
+    @Test
+    public void closedSiteNotFull() {
+        Percolation perc = new Percolation(3);
+        assertEquals(false, perc.isFull(1, 1);
+    }
 }
