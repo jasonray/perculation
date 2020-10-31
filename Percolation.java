@@ -9,7 +9,7 @@ public class Percolation {
 
     // creates n-by-n grid, with all sites initially blocked
     public Percolation(int n) {
-        if (n == 0) {
+        if (n <= 0) {
             throw new IllegalArgumentException("Invalid grid size [" + n + "]");
         }
 

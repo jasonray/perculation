@@ -23,6 +23,13 @@ class PercolationTest {
     }
 
     @Test
+    public void initWithNegativeThrowsException() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            Percolation perc = new Percolation(-1);
+        });
+    }
+
+    @Test
     public void afterInitSiteIsClosedn1() {
         Percolation perc = new Percolation(1);
         assertEquals(false, perc.isOpen(0, 0));
