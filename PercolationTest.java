@@ -145,10 +145,33 @@ class PercolationTest {
         Percolation perc = new Percolation(1);
         assertEquals(false, perc.percolates());
     }
+
     @Test
     public void oneOpenCellPerc() {
         Percolation perc = new Percolation(1);
-        perc.open(0,0);
+        perc.open(0, 0);
+        assertEquals(true, perc.percolates());
+    }
+
+    @Test
+    public void threeCellInitDoesNotPerc() {
+        Percolation perc = new Percolation(3);
+        assertEquals(false, perc.percolates());
+    }
+
+    @Test
+    public void threeCellWithPathPerc() {
+        Percolation perc = new Percolation(3);
+        assertEquals(false, perc.percolates());
+        perc.open(0, 0);
+        assertEquals(false, perc.percolates());
+        perc.open(2, 2);
+        assertEquals(false, perc.percolates());
+        perc.open(1, 1);
+        assertEquals(false, perc.percolates());
+        perc.open(1, 0);
+        assertEquals(false, perc.percolates());
+        perc.open(2, 1);
         assertEquals(true, perc.percolates());
     }
 }
