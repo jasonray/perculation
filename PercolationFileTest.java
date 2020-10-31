@@ -115,4 +115,9 @@ class PercolationFileTest {
     public void input8dups() {
         runTest("input8-dups.txt", 34, true);
     }
+
+    @Test
+    public void input8no() {
+        runTest("input8-no.txt", 33, false);
+    }
 }
