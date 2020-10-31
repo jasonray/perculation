@@ -1,6 +1,7 @@
-
+import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
 public class Percolation {
+    private WeightedQuickUnionUF qf;
     private boolean[][] siteState;
 
     // creates n-by-n grid, with all sites initially blocked
@@ -12,7 +13,10 @@ public class Percolation {
                 siteState[row][col] = false;
             }
         }
-        // WeightedQuickUnionUF qf = new WeightedQuickUnionUF(n * n);
+
+        // the extra +2 is for tracking the virtual top and virtual bottom
+        int numberOfCells = n*n + 2;
+         qf = new WeightedQuickUnionUF(n * n);
     }
 
     // opens the site (row, col) if it is not open already
