@@ -127,4 +127,16 @@ class PercolationTest {
         perc.open(1,2);
         assertEquals(true, perc.isFull(2, 2));
     }
+
+    @Test
+    public void windyWayToTopIsFull() {
+        Percolation perc = new Percolation(3);
+        assertEquals(false, perc.isFull(2, 2));
+        perc.open(2,2);
+        perc.open(2,1);
+        perc.open(1,1);
+        perc.open(1,0);
+        perc.open(0,0);
+        assertEquals(true, perc.isFull(2, 2));
+    }
 }
