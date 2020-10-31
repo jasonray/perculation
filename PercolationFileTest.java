@@ -33,7 +33,6 @@ class PercolationFileTest {
                     //the format of the files is not consistent, but there are 2 numeric values with misc " " between them
                     int row = Integer.parseInt(parts[0]);
                     int col = Integer.parseInt(parts[parts.length - 1]);
-                    if (perc == null) throw new RuntimeException("Perc unexpected null");
                     //these are 1-based array, and perc expected 0-based array
                     perc.open(row - 1, col - 1);
                 }
