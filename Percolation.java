@@ -34,15 +34,12 @@ public class Percolation {
         siteState[row][col] = true;
         int siteIndex = lookupSiteIndex(row, col);
 
-        //if cell to the left is also open, then union them
+        //if adjacent cells are also open, then union them
         unionIfLeftOpen(siteIndex, row, col);
-        //if cell to the right is also open, then union them
-        unionIfNeighborOpen(siteIndex, row, col + 1);
-        //if cell above is also open, then union them
-        unionIfNeighborOpen(siteIndex, row + 1, col);
-        //if cell below is also open, then union them
-        unionIfNeighborOpen(siteIndex, row - 1, col);
-
+        unionIfRightOpen(siteIndex, row, col);
+        unionIfAboveOpen(siteIndex, row, col);
+        unionIfBelowOpen(siteIndex, row, col);
+        
         //if cell is top row, join to virtual top
         unionIfTop(row, siteIndex);
 
@@ -72,6 +69,18 @@ public class Percolation {
 
     private void unionIfLeftOpen(int siteIndex, int siteRow, int siteCol) {
         unionIfNeighborOpen(siteIndex, siteRow, siteCol - 1);
+    }
+
+    private void unionIfRightOpen(int siteIndex, int siteRow, int siteCol) {
+        unionIfNeighborOpen(siteIndex, siteRow, siteCol + 1);
+    }
+
+    private void unionIfAboveOpen(int siteIndex, int siteRow, int siteCol) {
+        unionIfNeighborOpen(siteIndex, siteRow + 1, siteCol);
+    }
+
+    private void unionIfBelowOpen(int siteIndex, int siteRow, int siteCol) {
+        unionIfNeighborOpen(siteIndex, siteRow - 1, siteCol);
     }
 
     private void unionIfNeighborOpen(int siteIndex, int neighborRow, int neighborCol) {
