@@ -193,9 +193,15 @@ class PercolationTest {
     public void invalidOpenCellTooFarLeft() {
         Percolation perc = new Percolation(3);
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            perc.open(-1,1);
+            perc.open(1,-1);
         });
-
+    }
+    @Test
+    public void invalidOpenCellTooFarRight() {
+        Percolation perc = new Percolation(3);
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            perc.open(1,4);
+        });
     }
 
 }
