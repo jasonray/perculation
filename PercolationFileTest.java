@@ -65,5 +65,10 @@ class PercolationFileTest {
         runTest("greeting57.txt", 2522, false);
     }
 
+    @Test
+    public void heart25() {
+        runTest("heart25.txt", 352, false);
+    }
+
 
 }
