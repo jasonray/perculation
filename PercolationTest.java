@@ -145,4 +145,10 @@ class PercolationTest {
         Percolation perc = new Percolation(1);
         assertEquals(false, perc.percolates());
     }
+    @Test
+    public void oneOpenCellPerc() {
+        Percolation perc = new Percolation(1);
+        perc.open(0,0);
+        assertEquals(true, perc.percolates());
+    }
 }

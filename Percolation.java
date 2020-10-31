@@ -96,8 +96,7 @@ public class Percolation {
     }
 
     public boolean percolates() {
-        return false;
-        //return qf.find(virtualTopIndex) == qf.find(virtualBottomIndex);
+        return qf.find(virtualTopIndex) == qf.find(virtualBottomIndex);
     }
 
 }
