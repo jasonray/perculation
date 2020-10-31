@@ -27,7 +27,7 @@ class PercolationTest {
     @Test
     public void afterInitSiteIsClosedn1() {
         Percolation perc = new Percolation(1);
-        assertEquals(false, perc.isOpen(0, 0));
+        assertEquals(false, perc.isOpen(1, 1));
     }
 
     @Test
@@ -253,4 +253,52 @@ class PercolationTest {
             perc.isFull(4, 1);
         });
     }
+
+
+    @Test
+    public void invalidIsOpenCellTooFarLeft() {
+        Percolation perc = new Percolation(3);
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            perc.isOpen(1, -1);
+        });
+    }
+    @Test
+    public void invalidIsOpenCellTooFarLeft0() {
+        Percolation perc = new Percolation(3);
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            perc.isOpen(1, 0);
+        });
+    }
+
+    @Test
+    public void invalidIsOpenCellTooFarRight() {
+        Percolation perc = new Percolation(3);
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            perc.isOpen(1, 4);
+        });
+    }
+
+    @Test
+    public void invalidIsOpenCellTooFarUp() {
+        Percolation perc = new Percolation(3);
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            perc.isOpen(-1, 1);
+        });
+    }
+    @Test
+    public void invalidIsOpenCellTooFarUp0() {
+        Percolation perc = new Percolation(3);
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            perc.isOpen(0, 1);
+        });
+    }
+
+    @Test
+    public void invalidIsOpenCellTooFarDown() {
+        Percolation perc = new Percolation(3);
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            perc.isOpen(4, 1);
+        });
+    }
+
 }

@@ -112,6 +112,7 @@ public class Percolation {
 
     // is the site (row, col) open?
     public boolean isOpen(int row, int col) {
+        if (isCellOutOfBounds(row, col)) throw new IllegalArgumentException("cell out of bounds");
         return siteState[row][col];
     }
 
