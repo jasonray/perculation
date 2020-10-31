@@ -49,7 +49,7 @@ class PercolationFileTest {
         assertEquals(expectedOpenSites, perc.numberOfOpenSites());
         assertEquals(expectedPercolates, perc.percolates());
     }
-    
+
     @Test
     public void eagle25() {
         runTest("eagle25.txt", 400, true);
@@ -82,7 +82,7 @@ class PercolationFileTest {
 
     @Test
     public void input2() {
-        runTest("input2.txt", 2, false);
+        runTest("input2.txt", 3, true);
     }
 
     @Test
