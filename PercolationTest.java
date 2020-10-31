@@ -87,4 +87,12 @@ class PercolationTest {
         Percolation perc = new Percolation(3);
         assertEquals(false, perc.isFull(0, 0));
     }
+
+    @Test
+    public void openSiteAtTopIsFull() {
+        Percolation perc = new Percolation(3);
+        assertEquals(false, perc.isFull(0, 0));
+        perc.open(0,0);
+        assertEquals(true, perc.isFull(0, 0));
+    }
 }
