@@ -15,8 +15,8 @@ public class Percolation {
         }
 
         // the extra +2 is for tracking the virtual top and virtual bottom
-        int numberOfCells = n*n + 2;
-         qf = new WeightedQuickUnionUF(n * n);
+        int numberOfCells = n * n + 2;
+        qf = new WeightedQuickUnionUF(n * n);
     }
 
     // opens the site (row, col) if it is not open already
