@@ -188,4 +188,14 @@ class PercolationTest {
         perc.open(2, 1);
         assertEquals(true, perc.percolates());
     }
+
+    @Test
+    public void invalidOpenCellTooFarLeft() {
+        Percolation perc = new Percolation(3);
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            perc.open(-1,1);
+        });
+
+    }
+
 }

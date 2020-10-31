@@ -35,6 +35,8 @@ public class Percolation {
 
     // opens the site (row, col) if it is not open already
     public void open(int row, int col) {
+        if (isCellOutOfBounds(row, col)) throw new IllegalArgumentException("cell out of bounds");
+
         siteState[row][col] = true;
         int siteIndex = lookupSiteIndex(row, col);
 
