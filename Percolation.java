@@ -14,18 +14,17 @@ public class Percolation {
         siteState = new boolean[n][n];
         qfIndex = new int[n][n];
 
-        int index = 0;
+        int siteIndex = 0;
         for (int row = 0; row < n; row++) {
             for (int col = 0; col < n; col++) {
                 siteState[row][col] = false;
-                qfIndex[row][col] = index;
-                index++;
+                qfIndex[row][col] = siteIndex;
+                siteIndex++;
             }
         }
 
-        virtualTopIndex = index;
-        index++;
-        virtualBottomIndex = index;
+        virtualTopIndex = siteIndex++;
+        virtualBottomIndex = siteIndex;
 
         // the extra +2 is for tracking the virtual top and virtual bottom
         int numberOfCells = n * n + 2;
