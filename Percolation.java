@@ -41,14 +41,22 @@ public class Percolation {
         unionIfNeighborOpen(siteIndex, row - 1, col);
 
         //if cell is top row, join to virtual top
-        if (row == 0) {
+        if (isTopRow(row)) {
             qf.union(siteIndex, virtualTopIndex);
         }
 
         //if cell is bottom row, join to virtual bottom
-        if (row == siteState.length - 1) {
+        if (isBottomRow(row)) {
             qf.union(siteIndex, virtualBottomIndex);
         }
+    }
+
+    private boolean isTopRow(int row) {
+        return row == 0;
+    }
+
+    private boolean isBottomRow(int row) {
+        return row == (siteState.length - 1);
     }
 
     private void unionIfNeighborOpen(int siteIndex, int neighborRow, int neighborCol) {
