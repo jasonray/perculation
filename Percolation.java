@@ -117,6 +117,7 @@ public class Percolation {
 
     // is the site (row, col) full?  Full means that it is connected to the top
     public boolean isFull(int row, int col) {
+        if (isCellOutOfBounds(row, col)) throw new IllegalArgumentException("cell out of bounds");
         return qf.find(lookupSiteIndex(row, col)) == qf.find(virtualTopIndex);
     }
 

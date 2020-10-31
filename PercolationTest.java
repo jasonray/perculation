@@ -207,4 +207,50 @@ class PercolationTest {
             perc.open(4, 1);
         });
     }
+
+    @Test
+    public void invalidFullCellTooFarLeft() {
+        Percolation perc = new Percolation(3);
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            perc.isFull(1, -1);
+        });
+    }
+    @Test
+    public void invalidFullCellTooFarLeft0() {
+        Percolation perc = new Percolation(3);
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            perc.isFull(1, 0);
+        });
+    }
+
+    @Test
+    public void invalidFullCellTooFarRight() {
+        Percolation perc = new Percolation(3);
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            perc.isFull(1, 4);
+        });
+    }
+
+    @Test
+    public void invalidFullCellTooFarUp() {
+        Percolation perc = new Percolation(3);
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            perc.isFull(-1, 1);
+        });
+    }
+    @Test
+    public void invalidFullCellTooFarUp0() {
+        Percolation perc = new Percolation(3);
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            perc.isFull(0, 1);
+        });
+    }
+
+    @Test
+    public void invalidFullCellTooFarDown() {
+        Percolation perc = new Percolation(3);
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            perc.isFull(4, 1);
+        });
+    }
 }
