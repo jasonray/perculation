@@ -41,4 +41,14 @@ class PercolationTest {
         assertEquals(true, perc.isOpen(0, 0));
         assertEquals(true, perc.isOpen(1, 1));
     }
+
+    @Test
+    public void switchSiteFromOpenToCloseVerifyOpenNonEqualRowCol() {
+        Percolation perc = new Percolation(3);
+        assertEquals(false, perc.isOpen(0, 1));
+        assertEquals(false, perc.isOpen(1, 0));
+        perc.open(1, 0);
+        assertEquals(false, perc.isOpen(0, 1));
+        assertEquals(true, perc.isOpen(1, 0));
+    }
 }
