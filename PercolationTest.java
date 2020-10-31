@@ -11,8 +11,15 @@ class PercolationTest {
 
     @Test
     public void init() {
-        Percolation perc = new Percolation(0);
+        Percolation perc = new Percolation(1);
         assertNotNull(perc);
+    }
+
+    @Test
+    public void initWithZeroThrowsException() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            Percolation perc = new Percolation(0);
+        });
     }
 
     @Test
