@@ -33,32 +33,32 @@ class PercolationTest {
     @Test
     public void switchSiteFromOpenToCloseVerifyOpen() {
         Percolation perc = new Percolation(1);
-        assertEquals(false, perc.isOpen(0, 0));
-        perc.open(0, 0);
-        assertEquals(true, perc.isOpen(0, 0));
+        assertEquals(false, perc.isOpen(1, 1));
+        perc.open(1, 1);
+        assertEquals(true, perc.isOpen(1, 1));
     }
 
     @Test
     public void switchSiteFromOpenToCloseVerifyOpenN2() {
         Percolation perc = new Percolation(2);
-        assertEquals(false, perc.isOpen(0, 0));
         assertEquals(false, perc.isOpen(1, 1));
-        perc.open(0, 0);
-        assertEquals(true, perc.isOpen(0, 0));
-        assertEquals(false, perc.isOpen(1, 1));
+        assertEquals(false, perc.isOpen(2, 2));
         perc.open(1, 1);
-        assertEquals(true, perc.isOpen(0, 0));
         assertEquals(true, perc.isOpen(1, 1));
+        assertEquals(false, perc.isOpen(2, 2));
+        perc.open(2, 2);
+        assertEquals(true, perc.isOpen(1, 1));
+        assertEquals(true, perc.isOpen(2, 2));
     }
 
     @Test
     public void switchSiteFromOpenToCloseVerifyOpenNonEqualRowCol() {
         Percolation perc = new Percolation(3);
-        assertEquals(false, perc.isOpen(0, 1));
-        assertEquals(false, perc.isOpen(1, 0));
-        perc.open(1, 0);
-        assertEquals(false, perc.isOpen(0, 1));
-        assertEquals(true, perc.isOpen(1, 0));
+        assertEquals(false, perc.isOpen(1, 2));
+        assertEquals(false, perc.isOpen(2, 1));
+        perc.open(2, 1);
+        assertEquals(false, perc.isOpen(1, 2));
+        assertEquals(true, perc.isOpen(2, 1));
     }
 
     @Test
@@ -94,44 +94,22 @@ class PercolationTest {
     @Test
     public void closedSiteAtTopNotFull() {
         Percolation perc = new Percolation(3);
-        assertEquals(false, perc.isFull(0, 0));
+        assertEquals(false, perc.isFull(2, 2));
     }
 
     @Test
     public void openSiteAtTopIsFull() {
         Percolation perc = new Percolation(3);
-        assertEquals(false, perc.isFull(0, 0));
-        perc.open(0, 0);
-        assertEquals(true, perc.isFull(0, 0));
+        assertEquals(false, perc.isFull(1, 2));
+        perc.open(1, 2);
+        assertEquals(true, perc.isFull(1, 2));
     }
 
     @Test
-    public void openSiteWithStraightLineToTopIsFull1101() {
-        Percolation perc = new Percolation(3);
-        assertEquals(false, perc.isFull(1, 1));
-        perc.open(1, 1);
-        assertEquals(false, perc.isFull(1, 1));
-        perc.open(0, 1);
-        assertEquals(true, perc.isFull(1, 1));
-    }
-
-    @Test
-    public void openSiteWithStraightLineToTopIsFull0111() {
-        Percolation perc = new Percolation(3);
-        assertEquals(false, perc.isFull(1, 1));
-        perc.open(0, 1);
-        assertEquals(false, perc.isFull(1, 1));
-        perc.open(1, 1);
-        assertEquals(true, perc.isFull(1, 1));
-    }
-
-    @Test
-    public void openSiteWithStraightLineToTopIsFull220212() {
+    public void openSiteWithStraightLineToTopIsFull2212() {
         Percolation perc = new Percolation(3);
         assertEquals(false, perc.isFull(2, 2));
         perc.open(2, 2);
-        assertEquals(false, perc.isFull(2, 2));
-        perc.open(0, 2);
         assertEquals(false, perc.isFull(2, 2));
         perc.open(1, 2);
         assertEquals(true, perc.isFull(2, 2));
@@ -140,13 +118,13 @@ class PercolationTest {
     @Test
     public void windyWayToTopIsFull() {
         Percolation perc = new Percolation(3);
-        assertEquals(false, perc.isFull(2, 2));
+        assertEquals(false, perc.isFull(3, 3));
+        perc.open(3, 3);
+        perc.open(3, 2);
         perc.open(2, 2);
         perc.open(2, 1);
         perc.open(1, 1);
-        perc.open(1, 0);
-        perc.open(0, 0);
-        assertEquals(true, perc.isFull(2, 2));
+        assertEquals(true, perc.isFull(3, 3));
     }
 
     @Test
@@ -158,7 +136,7 @@ class PercolationTest {
     @Test
     public void oneOpenCellPerc() {
         Percolation perc = new Percolation(1);
-        perc.open(0, 0);
+        perc.open(1, 1);
         assertEquals(true, perc.percolates());
     }
 
@@ -172,15 +150,15 @@ class PercolationTest {
     public void threeCellWithPathPerc() {
         Percolation perc = new Percolation(3);
         assertEquals(false, perc.percolates());
-        perc.open(0, 0);
+        perc.open(1, 1);
+        assertEquals(false, perc.percolates());
+        perc.open(3, 3);
         assertEquals(false, perc.percolates());
         perc.open(2, 2);
         assertEquals(false, perc.percolates());
-        perc.open(1, 1);
-        assertEquals(false, perc.percolates());
-        perc.open(1, 0);
-        assertEquals(false, perc.percolates());
         perc.open(2, 1);
+        assertEquals(false, perc.percolates());
+        perc.open(3, 2);
         assertEquals(true, perc.percolates());
     }
 
@@ -189,6 +167,13 @@ class PercolationTest {
         Percolation perc = new Percolation(3);
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             perc.open(1, -1);
+        });
+    }
+    @Test
+    public void invalidOpenCellTooFarLeft0() {
+        Percolation perc = new Percolation(3);
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            perc.open(1, 0);
         });
     }
 
@@ -205,6 +190,13 @@ class PercolationTest {
         Percolation perc = new Percolation(3);
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             perc.open(-1, 1);
+        });
+    }
+    @Test
+    public void invalidOpenCellTooFarUp0() {
+        Percolation perc = new Percolation(3);
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            perc.open(0, 1);
         });
     }
 

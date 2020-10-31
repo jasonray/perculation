@@ -13,12 +13,13 @@ public class Percolation {
             throw new IllegalArgumentException("Invalid grid size [" + n + "]");
         }
 
-        siteState = new boolean[n][n];
-        qfIndex = new int[n][n];
+        //convention is 1-based arrays, so we will reserve an extra row, col
+        siteState = new boolean[n + 1][n + 1];
+        qfIndex = new int[n + 1][n + 1];
 
         int siteIndex = 0;
-        for (int row = 0; row < n; row++) {
-            for (int col = 0; col < n; col++) {
+        for (int row = 1; row <= n; row++) {
+            for (int col = 1; col <= n; col++) {
                 siteState[row][col] = false;
                 qfIndex[row][col] = siteIndex;
                 siteIndex++;
@@ -54,7 +55,7 @@ public class Percolation {
     }
 
     private boolean isTopRow(int row) {
-        return row == 0;
+        return row == 1;
     }
 
     private boolean isBottomRow(int row) {
@@ -99,8 +100,9 @@ public class Percolation {
     }
 
     private boolean isCellOutOfBounds(int row, int col) {
-        if (row < 0 || row >= siteState.length) return true;
-        if (col < 0 || col >= siteState[row].length) return true;
+        //the checks are against length-1 because there are 1 based arrays, so a 1x1 grid is actually stored in a 2x2 array.  Funky
+        if (row <= 0 || row > (siteState.length - 1)) return true;
+        if (col <= 0 || col > (siteState[row].length - 1)) return true;
         return false;
     }
 

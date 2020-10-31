@@ -34,7 +34,7 @@ class PercolationFileTest {
                     int row = Integer.parseInt(parts[0]);
                     int col = Integer.parseInt(parts[parts.length - 1]);
                     //these are 1-based array, and perc expected 0-based array
-                    perc.open(row - 1, col - 1);
+                    perc.open(row, col);
                 }
             }
         }
