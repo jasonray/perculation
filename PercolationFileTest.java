@@ -30,8 +30,9 @@ class PercolationFileTest {
                 }
                 else if (data.length() > 0) {
                     String[] parts = data.split(" ");
+                    //the format of the files is not consistent, but there are 2 numeric values with misc " " between them
                     int row = Integer.parseInt(parts[0]);
-                    int col = Integer.parseInt(parts[1]);
+                    int col = Integer.parseInt(parts[parts.length - 1]);
                     if (perc == null) throw new RuntimeException("Perc unexpected null");
                     //these are 1-based array, and perc expected 0-based array
                     perc.open(row - 1, col - 1);
@@ -95,4 +96,8 @@ class PercolationFileTest {
         runTest("input4.txt", 8, true);
     }
 
+    @Test
+    public void input5() {
+        runTest("input5.txt", 25, true);
+    }
 }
