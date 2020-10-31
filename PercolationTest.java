@@ -2,11 +2,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/* *****************************************************************************
- *  Name:              Alan Turing
- *  Coursera User ID:  123456
- *  Last modified:     1/1/2019
- **************************************************************************** */
 class PercolationTest {
 
     @Test
@@ -193,14 +188,15 @@ class PercolationTest {
     public void invalidOpenCellTooFarLeft() {
         Percolation perc = new Percolation(3);
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            perc.open(1,-1);
+            perc.open(1, -1);
         });
     }
+
     @Test
     public void invalidOpenCellTooFarRight() {
         Percolation perc = new Percolation(3);
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            perc.open(1,4);
+            perc.open(1, 4);
         });
     }
 
