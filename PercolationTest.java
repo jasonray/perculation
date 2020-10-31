@@ -51,4 +51,10 @@ class PercolationTest {
         assertEquals(false, perc.isOpen(0, 1));
         assertEquals(true, perc.isOpen(1, 0));
     }
+
+    @Test
+    public void numberOfOpenSitesAfterInitIs0() {
+        Percolation perc = new Percolation(3);
+        assertEquals(0, perc.numberOfOpenSites());
+    }
 }
