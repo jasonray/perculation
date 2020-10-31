@@ -146,4 +146,9 @@ class PercolationFileTest {
         runTest("input50.txt", 1412, true);
     }
 
+    @Test
+    public void input60() {
+        runTest("java60.txt", 578, true);
+    }
+
 }
