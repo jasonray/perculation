@@ -15,17 +15,21 @@ class PercolationFileTest {
 
     private Percolation loadPercFromFile(String filename) {
         Percolation perc = null;
+        int fileRow = 0;
         try {
             File f = new File(filename);
             Scanner reader = new Scanner(f);
             while (reader.hasNextLine()) {
+                fileRow++;
                 String data = reader.nextLine();
+                data = data.trim();
+                System.out.println("read row " + fileRow + ": " + data);
                 if (perc == null) {
                     int matrixSize = Integer.parseInt(data);
                     perc = new Percolation(matrixSize);
                 }
-                else {
-                    String[] parts = data.trim().split(" ");
+                else if (data.length() > 0) {
+                    String[] parts = data.split(" ");
                     int row = Integer.parseInt(parts[0]);
                     int col = Integer.parseInt(parts[1]);
                     if (perc == null) throw new RuntimeException("Perc unexpected null");
@@ -54,6 +58,11 @@ class PercolationFileTest {
     @Test
     public void eagle25() {
         runTest("eagle25.txt", 400, true);
+    }
+
+    @Test
+    public void greeting57() {
+        runTest("greeting57.txt", 2522, false);
     }
 
 
