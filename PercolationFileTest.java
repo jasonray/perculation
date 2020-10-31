@@ -130,4 +130,9 @@ class PercolationFileTest {
     public void input10no() {
         runTest("input10-no.txt", 55, false);
     }
+
+    @Test
+    public void input10() {
+        runTest("input10.txt", 56, true);
+    }
 }
