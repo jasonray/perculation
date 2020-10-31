@@ -140,4 +140,10 @@ class PercolationFileTest {
     public void input20() {
         runTest("input20.txt", 250, true);
     }
+
+    @Test
+    public void input50() {
+        runTest("input50.txt", 1412, true);
+    }
+
 }
