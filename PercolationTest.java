@@ -21,4 +21,11 @@ class PercolationTest {
         assertEquals(false, perc.isOpen(0, 0));
     }
 
+    @Test
+    public void switchSiteFromOpenToCloseVerifyOpen() {
+        Percolation perc = new Percolation(1);
+        assertEquals(false, perc.isOpen(0, 0));
+        perc.open(0, 0);
+        assertEquals(true, perc.isOpen(0, 0));
+    }
 }
