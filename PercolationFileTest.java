@@ -1,0 +1,60 @@
+import org.junit.jupiter.api.Test;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+/* *****************************************************************************
+ *  Name:              Alan Turing
+ *  Coursera User ID:  123456
+ *  Last modified:     1/1/2019
+ **************************************************************************** */
+class PercolationFileTest {
+
+    private Percolation loadPercFromFile(String filename) {
+        Percolation perc = null;
+        try {
+            File f = new File(filename);
+            Scanner reader = new Scanner(f);
+            while (reader.hasNextLine()) {
+                String data = reader.nextLine();
+                if (perc == null) {
+                    int matrixSize = Integer.parseInt(data);
+                    perc = new Percolation(matrixSize);
+                }
+                else {
+                    String[] parts = data.trim().split(" ");
+                    int row = Integer.parseInt(parts[0]);
+                    int col = Integer.parseInt(parts[1]);
+                    if (perc == null) throw new RuntimeException("Perc unexpected null");
+                    //these are 1-based array, and perc expected 0-based array
+                    perc.open(row - 1, col - 1);
+                }
+            }
+        }
+        catch (FileNotFoundException e) {
+            throw new RuntimeException("Unable to find file " + filename, e);
+        }
+        return perc;
+    }
+
+    private void runTest(String filename, int expectedOpenSites, boolean expectedPercolates) {
+        Percolation perc = loadPercFromFile(filename);
+        assertEquals(expectedOpenSites, perc.numberOfOpenSites());
+        assertEquals(expectedPercolates, perc.percolates());
+    }
+
+    @Test
+    public void input3() {
+        runTest("input3.txt", 6, true);
+    }
+
+    @Test
+    public void eagle25() {
+        runTest("eagle25.txt", 400, true);
+    }
+
+
+}
