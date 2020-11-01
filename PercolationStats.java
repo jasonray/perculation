@@ -85,11 +85,7 @@ public class PercolationStats {
     }
 
     public double min() {
-        double trackingMax = results[0];
-        for (int i = 0; i < this.numberOfSimulationsThatHaveBeenRun; i++) {
-            trackingMax = Math.min(trackingMax, this.results[i]);
-        }
-        return trackingMax;
+        return StdStats.min(this.results);
     }
 
     // sample standard deviation of percolation threshold
