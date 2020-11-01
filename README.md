@@ -1,1 +1,1 @@
-!(local.png)
+!(logo.png)
