@@ -30,6 +30,7 @@ public class PercolationStats {
         System.out.println("t:" + trials);
 
         PercolationStats simulator = new PercolationStats(n, trials);
+        simulator.outputStats();
     }
 
     // perform independent trials on an n-by-n grid
@@ -68,35 +69,26 @@ public class PercolationStats {
         this.results[numberOfSimulationsThatHaveBeenRun] = percentageOfOpenSites;
         this.numberOfSimulationsThatHaveBeenRun++;
 
+        System.out.println("complete simulation " + this.numberOfSimulationsThatHaveBeenRun);
         this.outputStats();
     }
 
     // sample mean of percolation threshold
     public double mean() {
-        double sumOfResults = 0;
-        for (int i = 0; i < this.numberOfSimulationsThatHaveBeenRun; i++) {
-            sumOfResults = sumOfResults + this.results[i];
-        }
-        return sumOfResults / this.numberOfSimulationsThatHaveBeenRun;
+        return StdStats.mean(this.results, 0, this.numberOfSimulationsThatHaveBeenRun);
     }
 
     public double max() {
-        return StdStats.max(this.results);
+        return StdStats.max(this.results, 0, this.numberOfSimulationsThatHaveBeenRun);
     }
 
     public double min() {
-        return StdStats.min(this.results);
+        return StdStats.min(this.results, 0, this.numberOfSimulationsThatHaveBeenRun);
     }
 
     // sample standard deviation of percolation threshold
     public double stddev() {
-        double mean = this.mean();
-        double standardDeviation = 0;
-        for (int i = 0; i < this.numberOfSimulationsThatHaveBeenRun; i++) {
-            double result = this.results[i];
-            standardDeviation += Math.pow(result - mean, 2);
-        }
-        return Math.sqrt(standardDeviation / this.numberOfSimulationsThatHaveBeenRun);
+        return StdStats.stddev(this.results, 0, this.numberOfSimulationsThatHaveBeenRun);
     }
 
     // low endpoint of 95% confidence interval
@@ -123,11 +115,11 @@ public class PercolationStats {
     public void outputStats() {
         System.out.println("Matrix Size       : " + this.n);
         System.out.println("Trials            : " + this.numberOfSimulationsThatHaveBeenRun);
-        System.out.println("mean              : " + this.mean());
-        System.out.println("stddev            : " + this.stddev());
         System.out.println(
                 "range             : " + "[" + this.min() + ", " + this
                         .max() + "]");
+        System.out.println("mean              : " + this.mean());
+        System.out.println("stddev            : " + this.stddev());
         System.out.println(
                 "95% confidence    : " + "[" + this.confidenceLo() + ", " + this
                         .confidenceHi() + "]");
