@@ -5,6 +5,7 @@
  **************************************************************************** */
 
 import edu.princeton.cs.algs4.StdRandom;
+import edu.princeton.cs.algs4.StdStats;
 
 public class PercolationStats {
     private int n;
@@ -80,11 +81,7 @@ public class PercolationStats {
     }
 
     public double max() {
-        double trackingMax = results[0];
-        for (int i = 0; i < this.numberOfSimulationsThatHaveBeenRun; i++) {
-            trackingMax = Math.max(trackingMax, this.results[i]);
-        }
-        return trackingMax;
+        return StdStats.max(this.results);
     }
 
     public double min() {
